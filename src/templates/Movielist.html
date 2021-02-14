@@ -1,11 +1,26 @@
+<style>
+.wishlist {
+ flex: 1;
+  text-align: right;
+}
+.movies {
+   flex: 1;
+  text-align: left;
+}
+.container {
+  display: grid;
+
+  }
+</style>
+
 {% extends "base.html" %}
 
 {% block content %}
 
+<div class="row">
 
 {% for movie in movies %}
-<div class="media">
-  <a href="/movie/{{movie.name}}">
+<div class="movies">
     <div class="media-left">
       {% if movie.image %}
         <img src="{{movie.image}}">
@@ -16,11 +31,39 @@
     <div class="media-body">
       <h4>{{movie.name}}</h4>
       <p>{{movie.summary}}</p>
+
+    <form action="/Movielist" method="POST" >
+  <button  type="submit" name="movie_id" value={{movie.id}}><span></span> Add</button>
+</form>
+    </div>
+</div>
+{% else %}
+<p>No books found</p>
+{% endfor %}
+
+{% for movie in wish %}
+<div class="wishlist">
+  <a href="/movie/{{movie.name}}">
+    <div class="media-left">
+      {% if movie.image %}
+        <img src="{{movie.image}}">
+      {% else %}
+        <img src="https://placekitten.com/g/128/192">
+      {% endif %}
+    </div>
+    <div class="media-body">
+      <h4>{{movie.name}}</h4>
+            <h4>{{movie.id}}</h4>
+      <p>{{movie.summary}}</p>
+<form action="/Movielistdel" method="POST" >
+  <button  type="submit" name="movie_id" value={{movie.id}}><span></span> Delete</button>
+</form>
+
     </div>
   </a>
 </div>
 {% else %}
 <p>No books found</p>
 {% endfor %}
-
+</div>
 {% endblock %}

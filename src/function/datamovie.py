@@ -1,9 +1,4 @@
-import json
-import os
-
-import requests
-
-from src.Movie import Movie
+from .Movie import Movie
 
 
 # token here

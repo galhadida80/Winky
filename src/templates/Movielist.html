@@ -30,7 +30,7 @@
     </div>
     <div class="media-body">
       <h4>{{movie.name}}</h4>
-      <p>{{movie.summary}}</p>
+      <p>Rate:{{movie.rate}}</p>
 
     <form action="/Movielist" method="POST" >
   <button  type="submit" name="movie_id" value={{movie.id}}><span></span> Add</button>
@@ -53,8 +53,7 @@
     </div>
     <div class="media-body">
       <h4>{{movie.name}}</h4>
-            <h4>{{movie.id}}</h4>
-      <p>{{movie.summary}}</p>
+            <p>Rate:{{movie.rate}}</p>
 <form action="/Movielistdel" method="POST" >
   <button  type="submit" name="movie_id" value={{movie.id}}><span></span> Delete</button>
 </form>
@@ -63,7 +62,7 @@
   </a>
 </div>
 {% else %}
-<p>No books found</p>
+<p>No Movies in wishlist</p>
 {% endfor %}
 </div>
 {% endblock %}
